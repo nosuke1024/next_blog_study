@@ -1,40 +1,58 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイドラインを提供します。
 
-## Project Overview
+## プロジェクト概要
 
-This is a new blog site project (blogサイトの立ち上げ) that is currently in its initial setup phase. The repository is empty except for a README.md file.
+Next.js、TypeScript、Tailwind CSS、App Routerを使用したブログサイトプロジェクトです。
 
-## Getting Started
+## よく使うコマンド
 
-Since this is a fresh project without any code or dependencies yet, the next steps would typically involve:
+- `npm run dev` - 開発サーバーを起動 (http://localhost:3000)
+- `npm run build` - 本番環境用にビルド
+- `npm run start` - 本番サーバーを起動
+- `npm run lint` - ESLintを実行
 
-1. **Choose a framework**: Consider using Next.js, Gatsby, or another static site generator for the blog
-2. **Initialize the project**: Run the appropriate initialization command for the chosen framework
-3. **Set up the development environment**: Install dependencies and configure the project
+## プロジェクト構造
 
-## Common Commands
+```
+next_blog_study/
+├── src/
+│   ├── app/           # App Routerのページとレイアウト
+│   │   ├── layout.tsx # ルートレイアウト
+│   │   ├── page.tsx   # ホームページ
+│   │   └── globals.css # グローバルスタイル
+│   ├── components/    # 再利用可能なコンポーネント（未作成）
+│   ├── lib/          # ユーティリティ関数と共有コード（未作成）
+│   └── styles/       # 追加スタイル（未作成）
+├── public/           # 静的アセット（未作成）
+├── package.json      # 依存関係とスクリプト
+├── tsconfig.json     # TypeScript設定
+├── tailwind.config.ts # Tailwind CSS設定
+├── next.config.js    # Next.js設定
+└── .eslintrc.json    # ESLint設定
+```
 
-Once the project is initialized, typical commands will depend on the chosen framework:
+## アーキテクチャ詳細
 
-### For Next.js:
-- `npm run dev` or `yarn dev` - Start development server
-- `npm run build` or `yarn build` - Build for production
-- `npm run lint` or `yarn lint` - Run linting
-- `npm test` or `yarn test` - Run tests
+- **フレームワーク**: Next.js 14 (App Router使用)
+- **言語**: TypeScript（strictモード有効）
+- **スタイリング**: Tailwind CSS
+- **フォント**: Google FontsのInter
+- **リンター**: ESLint (Next.js設定)
 
-### For Gatsby:
-- `gatsby develop` - Start development server
-- `gatsby build` - Build for production
-- `gatsby serve` - Serve production build locally
+## 開発ガイドライン
 
-## Architecture Notes
+1. 新しいコンポーネントは `src/components/` にTypeScriptファイルとして作成
+2. 新しいページはApp Router形式で作成（`src/app/` 内にフォルダを作成）
+3. Tailwind CSSは設定済みですぐに使用可能
+4. TypeScriptはstrictモードで型安全性を確保
+5. インポートエイリアス設定済み: `@/*` で `src/*` からインポート可能
 
-As this is a new project, the architecture will be established based on the chosen framework and requirements. Key considerations for a blog site typically include:
+## 今後の実装予定
 
-- Content management approach (MDX, CMS integration, or markdown files)
-- Routing strategy for blog posts
-- SEO optimization
-- Performance optimization for static content
-- Styling approach (CSS modules, styled-components, Tailwind CSS, etc.)
+- ブログ記事の管理機能
+- Markdownサポート
+- SEO最適化
+- ダークモード対応
+- コンポーネントライブラリの構築
