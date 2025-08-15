@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -38,7 +38,7 @@ interface PostsResponse {
   totalPages: number
 }
 
-export default function PostsPage() {
+function PostsContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { user } = useCurrentUser()
@@ -199,5 +199,13 @@ export default function PostsPage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function PostsPage() {
+  return (
+    <Suspense fallback={<div className="container mx-auto px-4 py-8 text-center">読み込み中...</div>}>
+      <PostsContent />
+    </Suspense>
   )
 }
